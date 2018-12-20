@@ -1,0 +1,6 @@
+<h1>Expeditions List:</h1>
+<% @expedition.each do |expedition| %>
+  <h2><%= expedition.title %></h2>
+  <p><%= expedition.description %></p>
+  <%= link_to 'Show', expedition_path(expedition) %>
+<% end %>

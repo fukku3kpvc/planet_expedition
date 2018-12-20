@@ -1,0 +1,36 @@
+<h2>Expedition: "<%= @expedition.title %>" info:</h2>
+<h4>Planets:</h4>
+<ul>
+<% @expedition.itinerary.planets.each do |planet| %>
+  <li>
+    <%= link_to planet.title, planet_path(planet) %>
+    <%= '| distance: ' + planet.distance.to_s %>
+  </li>
+<% end %>
+</ul>
+<p><strong>Distance: </strong><%= @expedition.itinerary.distance_length %></p>
+<p>
+  <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Spacehips List:
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+    <table class="table table-striped table-bordered table-sm">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+  <% @expedition.spaceships.each do |spaceship| %>
+      <tr>
+        <td><%= link_to spaceship.title, spaceship_path(spaceship) %></td>
+        <td><%= link_to 'Edit', edit_spaceship_path(spaceship), class: "btn btn-warning" %></td>
+        <td><%= button_to 'Delete', spaceship_path(spaceship), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
+      </tr>
+  <% end %>
+      </tbody>
+      </table>
+</div>

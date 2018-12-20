@@ -1,0 +1,3 @@
+<h2>Spaceship: "<%= @spaceship.title %>" info:</h2>
+<p><strong>Velocity: </strong><%= @spaceship.velocity %></p>
+<p><strong>Expedition: </strong><%= link_to @spaceship.expedition.title, expedition_path(@spaceship.expedition) %></p>
