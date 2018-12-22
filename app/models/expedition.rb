@@ -6,7 +6,7 @@ class Expedition < ApplicationRecord
   validates :title, length: { maximum: 15 }
   validates :description, length: { in: 10..500 }
 
-  after_create :create_assocs
+  # after_create :create_assocs
 
   private
 

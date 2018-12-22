@@ -1,0 +1,5 @@
+<h2>Planet: "<%= @planet.title %>" info:</h2>
+<p><strong>Galaxy: </strong><%= @planet.galaxy %></p>
+<p><strong>Expedition: </strong><%= link_to @expedition.title, expedition_path(@expedition) %></p>
+<p><strong>Description: </strong><%= @planet.description %></p>
+<p><strong>Distance: </strong><%= @planet.distance %></p>

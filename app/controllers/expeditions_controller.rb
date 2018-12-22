@@ -9,6 +9,13 @@ class ExpeditionsController < ApplicationController
   end
 
   def create
+    @expedition = Expedition.new(expedition_params)
+    if @expedition.save
+      redirect_to expeditions_path, notice: 'Сохранение прошло успешно'
+    else
+      flash[:alert] = 'Во время сохранения произошли ошибки'
+      render :new
+    end
   end
 
   def edit
