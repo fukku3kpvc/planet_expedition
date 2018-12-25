@@ -1,4 +1,5 @@
 <h1>Expeditions List:</h1>
+<p><%= link_to 'Create Expedition', new_expedition_path, class: 'btn btn-success' %></p>
 <% @expedition.each do |expedition| %>
   <h2><%= expedition.title %></h2>
   <p><%= expedition.description %></p>

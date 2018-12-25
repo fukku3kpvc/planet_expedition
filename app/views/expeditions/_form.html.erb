@@ -1,0 +1,11 @@
+<div class="container">
+  <%= simple_form_for @expedition do |form| %>
+    <%= form.input :title %>
+    <%= form.input :description %>
+    <%#= form.association :expedition, collection: Expedition.all, label_method: :title, value_method: :id %>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

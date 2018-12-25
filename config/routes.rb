@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :planets
   resources :spaceships
   resources :galaxies
+  resources :itinerary_entries
+  resources :itineraries
 
   root "expeditions#index"
 end

@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :galaxy do
-    title { "MyString" }
+    title { 'Gala' }
   end
 end

@@ -1,5 +1,10 @@
-<h1>Galaxies#index</h1>
-<p>Find me in app/views/galaxies/index.html.erb</p>
-<%= @galaxies.each do |galaxy| %>
-  <%= galaxy.title %>
-<% end %>
+<h1>Galaxies List</h1>
+<ul>
+  <% @galaxies.each do |galaxy| %>
+    <li>
+      <%= galaxy.title %> <br>
+      <%= link_to 'Show', galaxy_path(galaxy), class: 'btn btn-link' %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'Create Galaxy', new_galaxy_path, class: 'btn btn-success' %>

@@ -1,0 +1,8 @@
+<h2>Galaxy <%= @galaxy.title %></h2>
+<div>
+  <strong>title = </strong>
+  <%= @galaxy.title %>
+</div>
+<%= link_to 'Edit', edit_galaxy_path(@galaxy), class: 'btn btn-warning' %>
+<%= link_to 'Delete', galaxy_path(@galaxy), class: 'btn btn-danger',
+            method: :delete, data: { confirm: 'Are you sure?' } %>
