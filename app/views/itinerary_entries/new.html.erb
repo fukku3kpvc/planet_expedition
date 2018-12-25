@@ -1,0 +1,9 @@
+<h2>Creating Itinerary</h2>
+<ul>
+<% @expeditions.each do |expedition| %>
+    <li>
+      <%= expedition.title %> ID: <%= expedition.id %>
+    </li>
+<% end %>
+</ul>
+<%= render 'form' %>

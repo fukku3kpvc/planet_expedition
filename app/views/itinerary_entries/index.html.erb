@@ -1,0 +1,15 @@
+<h1>Itinerary Entries</h1>
+<div class="container">
+  <ul>
+    <% @itinerary_entries.each do |form| %>
+      <li>
+        <strong>value = </strong>
+        <%= form.value %> <br>
+        <strong>planet = </strong>
+        <%= form.planet.title %> <br>
+        <strong>itinerary_id = </strong>
+        <%= form.itinerary.expedition.title %>
+      </li>
+    <% end %>
+  </ul>
+</div>

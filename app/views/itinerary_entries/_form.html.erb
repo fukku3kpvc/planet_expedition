@@ -1,0 +1,11 @@
+<div class="container">
+  <%= simple_form_for @itinerary_entry do |form| %>
+    <%= form.input :value, as: :integer %>
+    <%= form.association :planet, collection: Planet.all, label_method: :title, value_method: :id %>
+    <%= form.association :itinerary, collection: Itinerary.all, label_method: :expedition_id, value_method: :id %>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
