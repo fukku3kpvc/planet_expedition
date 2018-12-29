@@ -71,3 +71,9 @@ gem 'simple_form'
 
 gem 'rake'
 
+gem 'devise'
+
+gem 'devise-bootstrap-views'
+
+gem 'pundit'
+
