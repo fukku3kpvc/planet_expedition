@@ -23,6 +23,11 @@
   </div>
 
   <div class="form-group">
+      <%= f.label :expedition %>
+      <%= f.collection_select :expedition_id, Expedition.all, :id, :title, { prompt: true }, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
     <%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
   </div>
 <% end %>

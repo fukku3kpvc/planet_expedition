@@ -9,7 +9,11 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   def sign_in(role)
-    post user_session_path, params: { user: attributes_for(role) }
+    user = FactoryBot.build(role)
+    user.save
+    post user_session_path, params: { user: { email: user.email,
+                                              password: user.password } }
+    assert_redirected_to root_path
   end
 
   def view_sign_in(role)
