@@ -1,4 +1,4 @@
-class ExpeditionPolicy < ApplicationPolicy
+class SpaceshipPolicy < ApplicationPolicy
   def index?
     user.cosmonaut? || user.commandor?
   end
@@ -13,5 +13,9 @@ class ExpeditionPolicy < ApplicationPolicy
 
   def show?
     user.cosmonaut? || user.commandor?
+  end
+
+  def destroy?
+    user.commandor?
   end
 end

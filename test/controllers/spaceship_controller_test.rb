@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class SpaceshipControllerTest < ActionDispatch::IntegrationTest
+
   test 'should create spaceship' do
     post spaceships_path, params: { spaceship: attributes_for(:spaceship) }
     assert_redirected_to spaceships_path
@@ -45,8 +46,10 @@ class SpaceshipControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to spaceships_path
   end
 
-  # test 'should not destroy spaceship' do
-  #   spaceship = FactoryBot.build(:spaceship)
-  #   spaceship.save
-  # end
+  test 'should log in and create spaceship' do
+    sign_in(:user)
+    # assert_redirected_to expeditions_path
+    post spaceships_path, params: { spaceship: attributes_for(:spaceship) }
+    assert_redirected_to spaceships_path
+  end
 end

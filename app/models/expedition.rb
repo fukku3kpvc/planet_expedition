@@ -1,6 +1,7 @@
 class Expedition < ApplicationRecord
   has_one :itinerary, dependent: :destroy
   has_many :spaceships, dependent: :destroy
+  has_many :users
 
   validates :title, :description, presence: true
   validates :title, length: { in: 5..50 }

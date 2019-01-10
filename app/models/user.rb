@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum role: %I[cosmonaut commandor]
+
+  belongs_to :expedition, optional: true
+  accepts_nested_attributes_for :expedition
 end

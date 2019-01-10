@@ -28,6 +28,11 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :expedition %> <br>
+    <%= f.collection_select :expedition_id, Expedition.all, :id, :title %>
+  </div>
+
+  <div class="form-group">
     <%= f.submit t('.update'), class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -2,6 +2,7 @@ class SpaceshipsController < ApplicationController
   before_action :set_spaceship, except: [:new, :create, :index]
 
   def index
+    authorize Spaceship
     @spaceships = Spaceship.all
   end
 
@@ -9,10 +10,12 @@ class SpaceshipsController < ApplicationController
   end
 
   def new
+    authorize Spaceship
     @spaceship = Spaceship.new
   end
 
   def create
+    authorize Spaceship
     @spaceship = Spaceship.new spaceship_params
     if @spaceship.save
       redirect_to spaceships_path, notice: 'Сохранение прошло успешно'
@@ -26,6 +29,7 @@ class SpaceshipsController < ApplicationController
   end
 
   def update
+    authorize Spaceship
     if @spaceship.update spaceship_params
       redirect_to spaceships_path, notice: 'Сохранение прошло успешно'
     else
@@ -35,6 +39,7 @@ class SpaceshipsController < ApplicationController
   end
 
   def destroy
+    authorize Spaceship
     @spaceship.destroy
     if @spaceship.destroyed?
       flash[:notice] = 'Удалено'

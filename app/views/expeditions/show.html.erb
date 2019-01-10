@@ -9,6 +9,14 @@
 <% end %>
 </ul>
 <p><strong>Distance: </strong><%= @expedition.itinerary.distance_length %></p>
+<p>Team:</p>
+<ul>
+<% @expedition.users.each do |user| %>
+  <li>
+    <%= user.email %>
+  </li>
+<% end %>
+</ul>
 <p>
   <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     Spacehips List:
