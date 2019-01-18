@@ -1,0 +1,4 @@
+class SpaceshipSerializer
+  include FastJsonapi::ObjectSerializer
+  attributes :title
+end

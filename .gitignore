@@ -77,3 +77,8 @@ bower.json
 node_modules/
 
 >>>>>>> fa6975c8c08d3aa92db2f14a3c5b1a232958e286
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity

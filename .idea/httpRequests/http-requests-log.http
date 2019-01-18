@@ -1,0 +1,446 @@
+GET http://localhost:3000/v2/spaceships/1
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T125722.200.json
+
+###
+
+GET http://localhost:3000/v2/users/sign_in
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T125708.200.json
+
+###
+
+GET http://localhost:3000/v2/users/sign_in?email=ykwnd@yahoo.com&password=test1234
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-01-19T125611.403.json
+
+###
+
+GET http://localhost:3000/v2/users/sign_in?email=ykwnd@yahoo.com&password=test1234
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-01-19T125610.403.json
+
+###
+
+GET http://localhost:3000/v2/users/sign_in
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-01-19T125536.403.json
+
+###
+
+PUT http://localhost:3000/v2/users/sign_in
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-01-19T125519.404.html
+
+###
+
+GET http://localhost:3000/v2/users/sign_in
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T125439.200.json
+
+###
+
+GET http://localhost:3000/v2/expeditions/1
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T125200.200.json
+
+###
+
+GET http://localhost:3000/v2/expeditions/1
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T125145.500.html
+
+###
+
+GET http://localhost:3000/v2/expeditions/1
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T125119.500.html
+
+###
+
+PATCH http://localhost:3000/v2/users/sign_in
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T124641.404.html
+
+###
+
+GET http://localhost:3000/v2/users/sign_in
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T124557.404.html
+
+###
+
+GET http://localhost:3000/v2/users/sign_in
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T124316.404.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T123037.200.json
+
+###
+
+PUT http://localhost:3000/v2/expeditions/25
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T123031.200.json
+
+###
+
+GET http://localhost:3000/v2/expeditions/25
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T123023.200.json
+
+###
+
+GET http://localhost:3000/v2/expeditions/25
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T123021.200.json
+
+###
+
+GET http://localhost:3000/v2/spaceships/25
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T122741.200.json
+
+###
+
+GET http://localhost:3000/v2/spaceships/25
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T122725.404.html
+
+###
+
+GET http://localhost:3000/v2/spaceships/25
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T122636.404.html
+
+###
+
+GET http://localhost:3000/v2/spaceships/25?title=Milky Way&description=This is very important expedition
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T122631.404.html
+
+###
+
+DELETE http://localhost:3000/v2/spaceships/25?title=Milky Way&description=This is very important expedition
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T122621.404.html
+
+###
+
+DELETE http://localhost:3000/v2/expeditions/25?title=Milky Way&description=This is very important expedition
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T122455.404.html
+
+###
+
+DELETE http://localhost:3000/v2/expeditions/25?title=Milky Way&description=This is very important expedition
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T122333.404.html
+
+###
+
+DELETE http://localhost:3000/v2/expeditions/12?title=Milky Way&description=This is very important expedition
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T122314.200.json
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8?title=Milky Way&description=This is very important expedition
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T121954.200.json
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8?title=Milky Way&description=This is very important expedition
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T121945.200.json
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8?title=Milky Way&description=This is very important expedition
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T121943.200.json
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8?title=Milky Way&description=This is very important expedition
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T121802.200.json
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8?title=Milky Wayyyy&description=This is very importnt description
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T121659.200.json
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8?title=Milky Wayyyy&description=This is very importnt description
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T121604.400.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8?title=Milky Wayyyy&description=This is very importnt description
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T121551.404.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8?title=Milky Wayyyy&description=This is very importnt description
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T121522.404.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8?title=Milky Wayyyy&description=This is very importnt description
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T121219.400.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8?title=Milky Wayyyy&description=This is very importnt description
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T121144.400.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8?title=Milky Wayyyy
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T121100.400.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8/Milky_Wayyy/This%20is%20very%20omportant!!
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T121041.404.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T121004.400.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8?"title"="Milky Wayyy"&"description"="This is very importnat!!"
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T120929.400.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8?title=Milky Wayyy&description=This is very importnat!!
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T120827.400.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+{ title: "Milkyy Way", description: "This is a very important !!!" }
+
+<> 2019-01-19T120540.400.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+{ title: "Milkyy Way" }
+
+<> 2019-01-19T120513.400.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8{%20title:%20"Milkyy%20Way"%20}
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8%20{%20title:%20"Milkyy%20Way"%20}
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+###
+
+PUT http://localhost:3000/v2/expeditions/8
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-19T120023.400.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/1
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-18T115951.404.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/1
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-18T115900.404.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/1
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-18T115646.404.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/1
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-18T115429.422.html
+
+###
+
+PUT http://localhost:3000/v2/expeditions/1
+Accept: */*
+Cache-Control: no-cache
+Authorization: Basic eWt3bmRAeWFob28uY29tOnRlc3QxMjM0
+
+<> 2019-01-18T115111.422.html
+
+###
+
