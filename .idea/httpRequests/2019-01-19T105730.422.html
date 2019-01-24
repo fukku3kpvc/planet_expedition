@@ -2357,6 +2357,70 @@
     </div>
     <div class="source hidden" id="frame-source-68">
         <div class="info">
+            Extracted source (around line <strong>#22</strong>):
+        </div>
+        <div class="data">
+            <table cellpadding="0" cellspacing="0" class="lines">
+                <tr>
+                    <td>
+              <pre class="line_numbers">
+<span>20</span>
+<span>21</span>
+<span>22</span>
+<span>23</span>
+<span>24</span>
+<span>25</span>
+              </pre>
+                    </td>
+                    <td width="100%">
+<pre>
+<div class="line">      super(env)
+</div><div class="line">    else
+</div><div class="line active">      @app.call(env)
+</div><div class="line">    end
+</div><div class="line">  end
+</div><div class="line">
+</div>
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="source hidden" id="frame-source-69">
+        <div class="info">
+            Extracted source (around line <strong>#57</strong>):
+        </div>
+        <div class="data">
+            <table cellpadding="0" cellspacing="0" class="lines">
+                <tr>
+                    <td>
+              <pre class="line_numbers">
+<span>55</span>
+<span>56</span>
+<span>57</span>
+<span>58</span>
+<span>59</span>
+<span>60</span>
+              </pre>
+                    </td>
+                    <td width="100%">
+<pre>
+<div class="line">
+</div><div class="line">    def call(env)
+</div><div class="line active">      rewrite_response(perform_request(rewrite_env(env)))
+</div><div class="line">    end
+</div><div class="line">
+</div><div class="line">    # Return modified env
+</div>
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="source hidden" id="frame-source-70">
+        <div class="info">
             Extracted source (around line <strong>#524</strong>):
         </div>
         <div class="data">
@@ -2387,7 +2451,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-69">
+    <div class="source hidden" id="frame-source-71">
         <div class="info">
             Extracted source (around line <strong>#225</strong>):
         </div>
@@ -2419,7 +2483,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-70">
+    <div class="source hidden" id="frame-source-72">
         <div class="info">
             Extracted source (around line <strong>#658</strong>):
         </div>
@@ -2451,7 +2515,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-71">
+    <div class="source hidden" id="frame-source-73">
         <div class="info">
             Extracted source (around line <strong>#472</strong>):
         </div>
@@ -2483,7 +2547,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-72">
+    <div class="source hidden" id="frame-source-74">
         <div class="info">
             Extracted source (around line <strong>#332</strong>):
         </div>
@@ -2515,7 +2579,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-73">
+    <div class="source hidden" id="frame-source-75">
         <div class="info">
             Extracted source (around line <strong>#133</strong>):
         </div>
@@ -2638,12 +2702,14 @@
                     class="trace-frames" data-frame-id="66" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call&#39;</a><br><a
                     class="trace-frames" data-frame-id="67"
                     href="#">rack (2.0.6) lib/rack/sendfile.rb:111:in `call&#39;</a><br><a class="trace-frames"
-                                                                                           data-frame-id="68" href="#">railties (5.2.2) lib/rails/engine.rb:524:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="69" href="#">puma (3.12.0) lib/puma/configuration.rb:225:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="70" href="#">puma (3.12.0) lib/puma/server.rb:658:in `handle_request&#39;</a><br><a
-                    class="trace-frames" data-frame-id="71" href="#">puma (3.12.0) lib/puma/server.rb:472:in `process_client&#39;</a><br><a
-                    class="trace-frames" data-frame-id="72" href="#">puma (3.12.0) lib/puma/server.rb:332:in `block in run&#39;</a><br><a
-                    class="trace-frames" data-frame-id="73" href="#">puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread&#39;</a><br></code></pre>
+                                                                                           data-frame-id="68" href="#">webpacker (3.5.5) lib/webpacker/dev_server_proxy.rb:22:in `perform_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="69" href="#">rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="70" href="#">railties (5.2.2) lib/rails/engine.rb:524:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="71" href="#">puma (3.12.0) lib/puma/configuration.rb:225:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="72" href="#">puma (3.12.0) lib/puma/server.rb:658:in `handle_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="73" href="#">puma (3.12.0) lib/puma/server.rb:472:in `process_client&#39;</a><br><a
+                    class="trace-frames" data-frame-id="74" href="#">puma (3.12.0) lib/puma/server.rb:332:in `block in run&#39;</a><br><a
+                    class="trace-frames" data-frame-id="75" href="#">puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread&#39;</a><br></code></pre>
         </div>
         <div id="Full-Trace" style="display: block;">
             <pre><code><a class="trace-frames" data-frame-id="0" href="#">actionpack (5.2.2) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request&#39;</a><br><a
@@ -2718,12 +2784,14 @@
                     class="trace-frames" data-frame-id="66" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call&#39;</a><br><a
                     class="trace-frames" data-frame-id="67"
                     href="#">rack (2.0.6) lib/rack/sendfile.rb:111:in `call&#39;</a><br><a class="trace-frames"
-                                                                                           data-frame-id="68" href="#">railties (5.2.2) lib/rails/engine.rb:524:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="69" href="#">puma (3.12.0) lib/puma/configuration.rb:225:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="70" href="#">puma (3.12.0) lib/puma/server.rb:658:in `handle_request&#39;</a><br><a
-                    class="trace-frames" data-frame-id="71" href="#">puma (3.12.0) lib/puma/server.rb:472:in `process_client&#39;</a><br><a
-                    class="trace-frames" data-frame-id="72" href="#">puma (3.12.0) lib/puma/server.rb:332:in `block in run&#39;</a><br><a
-                    class="trace-frames" data-frame-id="73" href="#">puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread&#39;</a><br></code></pre>
+                                                                                           data-frame-id="68" href="#">webpacker (3.5.5) lib/webpacker/dev_server_proxy.rb:22:in `perform_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="69" href="#">rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="70" href="#">railties (5.2.2) lib/rails/engine.rb:524:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="71" href="#">puma (3.12.0) lib/puma/configuration.rb:225:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="72" href="#">puma (3.12.0) lib/puma/server.rb:658:in `handle_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="73" href="#">puma (3.12.0) lib/puma/server.rb:472:in `process_client&#39;</a><br><a
+                    class="trace-frames" data-frame-id="74" href="#">puma (3.12.0) lib/puma/server.rb:332:in `block in run&#39;</a><br><a
+                    class="trace-frames" data-frame-id="75" href="#">puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread&#39;</a><br></code></pre>
         </div>
 
         <script type="text/javascript">
@@ -2763,7 +2831,7 @@
 
     <h2 style="margin-top: 30px">Request</h2>
     <p><b>Parameters</b>:</p>
-    <pre>{&quot;id&quot;=&gt;&quot;1&quot;}
+    <pre>{&quot;id&quot;=&gt;&quot;8&quot;, &quot;format&quot;=&gt;&quot;json&quot;}
 </pre>
 
     <div class="details">
@@ -2796,7 +2864,7 @@ SERVER_PROTOCOL: &quot;HTTP/1.1&quot;</pre>
 
 <div id="console"
      data-mount-point='/__web_console'
-     data-session-id='1d23df3fa9f5280a58e51fda311a6cf0'
+     data-session-id='e08785a9a737e55a980773cfb03c4e1b'
      data-prompt-label='>> '>
 </div>
 

@@ -17,3 +17,10 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require slider
+$(function(){
+    $('#dom').on('click', function (e) {
+        e.preventDefault();
+        console.log('event');
+    })
+});

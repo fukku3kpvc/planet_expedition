@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "id": "9",
+      "type": "spaceship",
+      "attributes": {
+        "title": "Sceince"
+      }
+    },
+    {
+      "id": "1",
+      "type": "spaceship",
+      "attributes": {
+        "title": "Corvette"
+      }
+    }
+  ]
+}

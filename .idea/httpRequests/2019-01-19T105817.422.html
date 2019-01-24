@@ -171,39 +171,39 @@
 
 <header>
     <h1>
-        ActionController::ParameterMissing
+        ActionController::InvalidAuthenticityToken
         in Api::V2::ExpeditionsController#update
     </h1>
 </header>
 
 <div id="container">
-    <h2>param is missing or the value is empty: expedition</h2>
+    <h2>ActionController::InvalidAuthenticityToken</h2>
 
-    <div class="source hidden" id="frame-source-0">
+    <div class="source " id="frame-source-0">
         <div class="info">
-            Extracted source (around line <strong>#443</strong>):
+            Extracted source (around line <strong>#211</strong>):
         </div>
         <div class="data">
             <table cellpadding="0" cellspacing="0" class="lines">
                 <tr>
                     <td>
               <pre class="line_numbers">
-<span>441</span>
-<span>442</span>
-<span>443</span>
-<span>444</span>
-<span>445</span>
-<span>446</span>
+<span>209</span>
+<span>210</span>
+<span>211</span>
+<span>212</span>
+<span>213</span>
+<span>214</span>
               </pre>
                     </td>
                     <td width="100%">
 <pre>
-<div class="line">        value
-</div><div class="line">      else
-</div><div class="line active">        raise ParameterMissing.new(key)
+<div class="line">
+</div><div class="line">        def handle_unverified_request
+</div><div class="line active">          raise ActionController::InvalidAuthenticityToken
+</div><div class="line">        end
 </div><div class="line">      end
 </div><div class="line">    end
-</div><div class="line">
 </div>
 </pre>
                     </td>
@@ -211,31 +211,32 @@
             </table>
         </div>
     </div>
-    <div class="source " id="frame-source-1">
+    <div class="source hidden" id="frame-source-1">
         <div class="info">
-            Extracted source (around line <strong>#37</strong>):
+            Extracted source (around line <strong>#243</strong>):
         </div>
         <div class="data">
             <table cellpadding="0" cellspacing="0" class="lines">
                 <tr>
                     <td>
               <pre class="line_numbers">
-<span>35</span>
-<span>36</span>
-<span>37</span>
-<span>38</span>
-<span>39</span>
-<span>40</span>
+<span>241</span>
+<span>242</span>
+<span>243</span>
+<span>244</span>
+<span>245</span>
+<span>246</span>
               </pre>
                     </td>
                     <td width="100%">
 <pre>
 <div class="line">
-</div><div class="line">    def expedition_params
-</div><div class="line active">      params.require(:expedition).permit(:title, :description)
-</div><div class="line">    end
-</div><div class="line">  end
-</div><div class="line">end</div>
+</div><div class="line">      def handle_unverified_request # :doc:
+</div><div class="line active">        forgery_protection_strategy.new(self).handle_unverified_request
+</div><div class="line">      end
+</div><div class="line">
+</div><div class="line">      #:nodoc:
+</div>
 </pre>
                     </td>
                 </tr>
@@ -244,29 +245,29 @@
     </div>
     <div class="source hidden" id="frame-source-2">
         <div class="info">
-            Extracted source (around line <strong>#5</strong>):
+            Extracted source (around line <strong>#255</strong>):
         </div>
         <div class="data">
             <table cellpadding="0" cellspacing="0" class="lines">
                 <tr>
                     <td>
               <pre class="line_numbers">
-<span>3</span>
-<span>4</span>
-<span>5</span>
-<span>6</span>
-<span>7</span>
-<span>8</span>
+<span>253</span>
+<span>254</span>
+<span>255</span>
+<span>256</span>
+<span>257</span>
+<span>258</span>
               </pre>
                     </td>
                     <td width="100%">
 <pre>
-<div class="line">    def update
-</div><div class="line">      expedition = Expedition.find params[:id]
-</div><div class="line active">      if expedition.update(expedition_params)
-</div><div class="line">        render json: expedition, status: :ok
-</div><div class="line">      else
-</div><div class="line">        render json: { errors: expedition.errors }, status: :unprocessable_entity
+<div class="line">      # clear run strategies and remove cached variables.
+</div><div class="line">      def handle_unverified_request
+</div><div class="line active">        super # call the default behaviour which resets/nullifies/raises
+</div><div class="line">        request.env[&quot;devise.skip_storage&quot;] = true
+</div><div class="line">        sign_out_all_scopes(false)
+</div><div class="line">      end
 </div>
 </pre>
                     </td>
@@ -276,29 +277,29 @@
     </div>
     <div class="source hidden" id="frame-source-3">
         <div class="info">
-            Extracted source (around line <strong>#6</strong>):
+            Extracted source (around line <strong>#238</strong>):
         </div>
         <div class="data">
             <table cellpadding="0" cellspacing="0" class="lines">
                 <tr>
                     <td>
               <pre class="line_numbers">
-<span>4</span>
-<span>5</span>
-<span>6</span>
-<span>7</span>
-<span>8</span>
-<span>9</span>
+<span>236</span>
+<span>237</span>
+<span>238</span>
+<span>239</span>
+<span>240</span>
+<span>241</span>
               </pre>
                     </td>
                     <td width="100%">
 <pre>
-<div class="line">  module BasicImplicitRender # :nodoc:
-</div><div class="line">    def send_action(method, *args)
-</div><div class="line active">      super.tap { default_render unless performed? }
-</div><div class="line">    end
+<div class="line">            end
+</div><div class="line">          end
+</div><div class="line active">          handle_unverified_request
+</div><div class="line">        end
+</div><div class="line">      end
 </div><div class="line">
-</div><div class="line">    def default_render(*args)
 </div>
 </pre>
                     </td>
@@ -308,29 +309,29 @@
     </div>
     <div class="source hidden" id="frame-source-4">
         <div class="info">
-            Extracted source (around line <strong>#194</strong>):
+            Extracted source (around line <strong>#426</strong>):
         </div>
         <div class="data">
             <table cellpadding="0" cellspacing="0" class="lines">
                 <tr>
                     <td>
               <pre class="line_numbers">
-<span>192</span>
-<span>193</span>
-<span>194</span>
-<span>195</span>
-<span>196</span>
-<span>197</span>
+<span>424</span>
+<span>425</span>
+<span>426</span>
+<span>427</span>
+<span>428</span>
+<span>429</span>
               </pre>
                     </td>
                     <td width="100%">
 <pre>
-<div class="line">      # which is *not* necessarily the same as the action name.
-</div><div class="line">      def process_action(method_name, *args)
-</div><div class="line active">        send_action(method_name, *args)
-</div><div class="line">      end
+<div class="line">          lambda do |target, value, &amp;block|
+</div><div class="line">            target, block, method, *arguments = expand(target, value, block)
+</div><div class="line active">            target.send(method, *arguments, &amp;block)
+</div><div class="line">          end
+</div><div class="line">        end
 </div><div class="line">
-</div><div class="line">      # Actually call the method associated with the action. Override
 </div>
 </pre>
                     </td>
@@ -340,29 +341,29 @@
     </div>
     <div class="source hidden" id="frame-source-5">
         <div class="info">
-            Extracted source (around line <strong>#30</strong>):
+            Extracted source (around line <strong>#198</strong>):
         </div>
         <div class="data">
             <table cellpadding="0" cellspacing="0" class="lines">
                 <tr>
                     <td>
               <pre class="line_numbers">
-<span>28</span>
-<span>29</span>
-<span>30</span>
-<span>31</span>
-<span>32</span>
-<span>33</span>
+<span>196</span>
+<span>197</span>
+<span>198</span>
+<span>199</span>
+<span>200</span>
+<span>201</span>
               </pre>
                     </td>
                     <td width="100%">
 <pre>
-<div class="line">    def process_action(*) #:nodoc:
-</div><div class="line">      self.formats = request.formats.map(&amp;:ref).compact
-</div><div class="line active">      super
-</div><div class="line">    end
+<div class="line">
+</div><div class="line">              unless halted
+</div><div class="line active">                result_lambda = -&gt; { user_callback.call target, value }
+</div><div class="line">                env.halted = halted_lambda.call(target, result_lambda)
 </div><div class="line">
-</div><div class="line">    # Check for double render errors and set the content_type after rendering.
+</div><div class="line">                if env.halted
 </div>
 </pre>
                     </td>
@@ -372,27 +373,27 @@
     </div>
     <div class="source hidden" id="frame-source-6">
         <div class="info">
-            Extracted source (around line <strong>#42</strong>):
+            Extracted source (around line <strong>#34</strong>):
         </div>
         <div class="data">
             <table cellpadding="0" cellspacing="0" class="lines">
                 <tr>
                     <td>
               <pre class="line_numbers">
-<span>40</span>
-<span>41</span>
-<span>42</span>
-<span>43</span>
-<span>44</span>
-<span>45</span>
+<span>32</span>
+<span>33</span>
+<span>34</span>
+<span>35</span>
+<span>36</span>
+<span>37</span>
               </pre>
                     </td>
                     <td width="100%">
 <pre>
-<div class="line">    def process_action(*args)
-</div><div class="line">      run_callbacks(:process_action) do
-</div><div class="line active">        super
-</div><div class="line">      end
+<div class="line">    included do
+</div><div class="line">      define_callbacks :process_action,
+</div><div class="line active">                       terminator: -&gt;(controller, result_lambda) { result_lambda.call; controller.performed? },
+</div><div class="line">                       skip_after_callbacks_if_terminated: true
 </div><div class="line">    end
 </div><div class="line">
 </div>
@@ -404,29 +405,29 @@
     </div>
     <div class="source hidden" id="frame-source-7">
         <div class="info">
-            Extracted source (around line <strong>#132</strong>):
+            Extracted source (around line <strong>#199</strong>):
         </div>
         <div class="data">
             <table cellpadding="0" cellspacing="0" class="lines">
                 <tr>
                     <td>
               <pre class="line_numbers">
-<span>130</span>
-<span>131</span>
-<span>132</span>
-<span>133</span>
-<span>134</span>
-<span>135</span>
+<span>197</span>
+<span>198</span>
+<span>199</span>
+<span>200</span>
+<span>201</span>
+<span>202</span>
               </pre>
                     </td>
                     <td width="100%">
 <pre>
-<div class="line">        if next_sequence.final?
-</div><div class="line">          next_sequence.invoke_before(env)
-</div><div class="line active">          env.value = !env.halted &amp;&amp; (!block_given? || yield)
-</div><div class="line">          next_sequence.invoke_after(env)
-</div><div class="line">          env.value
-</div><div class="line">        else
+<div class="line">              unless halted
+</div><div class="line">                result_lambda = -&gt; { user_callback.call target, value }
+</div><div class="line active">                env.halted = halted_lambda.call(target, result_lambda)
+</div><div class="line">
+</div><div class="line">                if env.halted
+</div><div class="line">                  target.send :halted_callback_hook, filter
 </div>
 </pre>
                     </td>
@@ -435,6 +436,134 @@
         </div>
     </div>
     <div class="source hidden" id="frame-source-8">
+        <div class="info">
+            Extracted source (around line <strong>#513</strong>):
+        </div>
+        <div class="data">
+            <table cellpadding="0" cellspacing="0" class="lines">
+                <tr>
+                    <td>
+              <pre class="line_numbers">
+<span>511</span>
+<span>512</span>
+<span>513</span>
+<span>514</span>
+<span>515</span>
+<span>516</span>
+              </pre>
+                    </td>
+                    <td width="100%">
+<pre>
+<div class="line">
+</div><div class="line">        def invoke_before(arg)
+</div><div class="line active">          @before.each { |b| b.call(arg) }
+</div><div class="line">        end
+</div><div class="line">
+</div><div class="line">        def invoke_after(arg)
+</div>
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="source hidden" id="frame-source-9">
+        <div class="info">
+            Extracted source (around line <strong>#513</strong>):
+        </div>
+        <div class="data">
+            <table cellpadding="0" cellspacing="0" class="lines">
+                <tr>
+                    <td>
+              <pre class="line_numbers">
+<span>511</span>
+<span>512</span>
+<span>513</span>
+<span>514</span>
+<span>515</span>
+<span>516</span>
+              </pre>
+                    </td>
+                    <td width="100%">
+<pre>
+<div class="line">
+</div><div class="line">        def invoke_before(arg)
+</div><div class="line active">          @before.each { |b| b.call(arg) }
+</div><div class="line">        end
+</div><div class="line">
+</div><div class="line">        def invoke_after(arg)
+</div>
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="source hidden" id="frame-source-10">
+        <div class="info">
+            Extracted source (around line <strong>#513</strong>):
+        </div>
+        <div class="data">
+            <table cellpadding="0" cellspacing="0" class="lines">
+                <tr>
+                    <td>
+              <pre class="line_numbers">
+<span>511</span>
+<span>512</span>
+<span>513</span>
+<span>514</span>
+<span>515</span>
+<span>516</span>
+              </pre>
+                    </td>
+                    <td width="100%">
+<pre>
+<div class="line">
+</div><div class="line">        def invoke_before(arg)
+</div><div class="line active">          @before.each { |b| b.call(arg) }
+</div><div class="line">        end
+</div><div class="line">
+</div><div class="line">        def invoke_after(arg)
+</div>
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="source hidden" id="frame-source-11">
+        <div class="info">
+            Extracted source (around line <strong>#131</strong>):
+        </div>
+        <div class="data">
+            <table cellpadding="0" cellspacing="0" class="lines">
+                <tr>
+                    <td>
+              <pre class="line_numbers">
+<span>129</span>
+<span>130</span>
+<span>131</span>
+<span>132</span>
+<span>133</span>
+<span>134</span>
+              </pre>
+                    </td>
+                    <td width="100%">
+<pre>
+<div class="line">        # Common case: no &#39;around&#39; callbacks defined
+</div><div class="line">        if next_sequence.final?
+</div><div class="line active">          next_sequence.invoke_before(env)
+</div><div class="line">          env.value = !env.halted &amp;&amp; (!block_given? || yield)
+</div><div class="line">          next_sequence.invoke_after(env)
+</div><div class="line">          env.value
+</div>
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="source hidden" id="frame-source-12">
         <div class="info">
             Extracted source (around line <strong>#41</strong>):
         </div>
@@ -466,7 +595,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-9">
+    <div class="source hidden" id="frame-source-13">
         <div class="info">
             Extracted source (around line <strong>#22</strong>):
         </div>
@@ -498,7 +627,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-10">
+    <div class="source hidden" id="frame-source-14">
         <div class="info">
             Extracted source (around line <strong>#34</strong>):
         </div>
@@ -530,7 +659,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-11">
+    <div class="source hidden" id="frame-source-15">
         <div class="info">
             Extracted source (around line <strong>#168</strong>):
         </div>
@@ -562,7 +691,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-12">
+    <div class="source hidden" id="frame-source-16">
         <div class="info">
             Extracted source (around line <strong>#23</strong>):
         </div>
@@ -594,7 +723,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-13">
+    <div class="source hidden" id="frame-source-17">
         <div class="info">
             Extracted source (around line <strong>#168</strong>):
         </div>
@@ -626,7 +755,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-14">
+    <div class="source hidden" id="frame-source-18">
         <div class="info">
             Extracted source (around line <strong>#32</strong>):
         </div>
@@ -658,7 +787,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-15">
+    <div class="source hidden" id="frame-source-19">
         <div class="info">
             Extracted source (around line <strong>#256</strong>):
         </div>
@@ -690,7 +819,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-16">
+    <div class="source hidden" id="frame-source-20">
         <div class="info">
             Extracted source (around line <strong>#24</strong>):
         </div>
@@ -722,7 +851,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-17">
+    <div class="source hidden" id="frame-source-21">
         <div class="info">
             Extracted source (around line <strong>#134</strong>):
         </div>
@@ -754,7 +883,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-18">
+    <div class="source hidden" id="frame-source-22">
         <div class="info">
             Extracted source (around line <strong>#32</strong>):
         </div>
@@ -786,7 +915,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-19">
+    <div class="source hidden" id="frame-source-23">
         <div class="info">
             Extracted source (around line <strong>#191</strong>):
         </div>
@@ -818,7 +947,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-20">
+    <div class="source hidden" id="frame-source-24">
         <div class="info">
             Extracted source (around line <strong>#252</strong>):
         </div>
@@ -850,7 +979,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-21">
+    <div class="source hidden" id="frame-source-25">
         <div class="info">
             Extracted source (around line <strong>#52</strong>):
         </div>
@@ -882,7 +1011,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-22">
+    <div class="source hidden" id="frame-source-26">
         <div class="info">
             Extracted source (around line <strong>#34</strong>):
         </div>
@@ -914,7 +1043,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-23">
+    <div class="source hidden" id="frame-source-27">
         <div class="info">
             Extracted source (around line <strong>#52</strong>):
         </div>
@@ -946,7 +1075,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-24">
+    <div class="source hidden" id="frame-source-28">
         <div class="info">
             Extracted source (around line <strong>#35</strong>):
         </div>
@@ -978,7 +1107,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-25">
+    <div class="source hidden" id="frame-source-29">
         <div class="info">
             Extracted source (around line <strong>#35</strong>):
         </div>
@@ -1010,7 +1139,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-26">
+    <div class="source hidden" id="frame-source-30">
         <div class="info">
             Extracted source (around line <strong>#840</strong>):
         </div>
@@ -1042,7 +1171,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-27">
+    <div class="source hidden" id="frame-source-31">
         <div class="info">
             Extracted source (around line <strong>#36</strong>):
         </div>
@@ -1074,7 +1203,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-28">
+    <div class="source hidden" id="frame-source-32">
         <div class="info">
             Extracted source (around line <strong>#34</strong>):
         </div>
@@ -1106,7 +1235,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-29">
+    <div class="source hidden" id="frame-source-33">
         <div class="info">
             Extracted source (around line <strong>#34</strong>):
         </div>
@@ -1138,7 +1267,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-30">
+    <div class="source hidden" id="frame-source-34">
         <div class="info">
             Extracted source (around line <strong>#15</strong>):
         </div>
@@ -1170,7 +1299,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-31">
+    <div class="source hidden" id="frame-source-35">
         <div class="info">
             Extracted source (around line <strong>#25</strong>):
         </div>
@@ -1202,7 +1331,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-32">
+    <div class="source hidden" id="frame-source-36">
         <div class="info">
             Extracted source (around line <strong>#38</strong>):
         </div>
@@ -1234,7 +1363,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-33">
+    <div class="source hidden" id="frame-source-37">
         <div class="info">
             Extracted source (around line <strong>#12</strong>):
         </div>
@@ -1266,7 +1395,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-34">
+    <div class="source hidden" id="frame-source-38">
         <div class="info">
             Extracted source (around line <strong>#18</strong>):
         </div>
@@ -1298,7 +1427,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-35">
+    <div class="source hidden" id="frame-source-39">
         <div class="info">
             Extracted source (around line <strong>#232</strong>):
         </div>
@@ -1330,7 +1459,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-36">
+    <div class="source hidden" id="frame-source-40">
         <div class="info">
             Extracted source (around line <strong>#226</strong>):
         </div>
@@ -1362,7 +1491,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-37">
+    <div class="source hidden" id="frame-source-41">
         <div class="info">
             Extracted source (around line <strong>#670</strong>):
         </div>
@@ -1394,7 +1523,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-38">
+    <div class="source hidden" id="frame-source-42">
         <div class="info">
             Extracted source (around line <strong>#559</strong>):
         </div>
@@ -1426,7 +1555,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-39">
+    <div class="source hidden" id="frame-source-43">
         <div class="info">
             Extracted source (around line <strong>#28</strong>):
         </div>
@@ -1458,7 +1587,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-40">
+    <div class="source hidden" id="frame-source-44">
         <div class="info">
             Extracted source (around line <strong>#98</strong>):
         </div>
@@ -1490,7 +1619,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-41">
+    <div class="source hidden" id="frame-source-45">
         <div class="info">
             Extracted source (around line <strong>#26</strong>):
         </div>
@@ -1522,7 +1651,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-42">
+    <div class="source hidden" id="frame-source-46">
         <div class="info">
             Extracted source (around line <strong>#14</strong>):
         </div>
@@ -1554,7 +1683,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-43">
+    <div class="source hidden" id="frame-source-47">
         <div class="info">
             Extracted source (around line <strong>#61</strong>):
         </div>
@@ -1586,7 +1715,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-44">
+    <div class="source hidden" id="frame-source-48">
         <div class="info">
             Extracted source (around line <strong>#135</strong>):
         </div>
@@ -1618,7 +1747,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-45">
+    <div class="source hidden" id="frame-source-49">
         <div class="info">
             Extracted source (around line <strong>#30</strong>):
         </div>
@@ -1650,7 +1779,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-46">
+    <div class="source hidden" id="frame-source-50">
         <div class="info">
             Extracted source (around line <strong>#20</strong>):
         </div>
@@ -1682,7 +1811,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-47">
+    <div class="source hidden" id="frame-source-51">
         <div class="info">
             Extracted source (around line <strong>#20</strong>):
         </div>
@@ -1714,7 +1843,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-48">
+    <div class="source hidden" id="frame-source-52">
         <div class="info">
             Extracted source (around line <strong>#33</strong>):
         </div>
@@ -1746,7 +1875,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-49">
+    <div class="source hidden" id="frame-source-53">
         <div class="info">
             Extracted source (around line <strong>#38</strong>):
         </div>
@@ -1771,134 +1900,6 @@
 </div><div class="line">          body = ::Rack::BodyProxy.new(body) { finish(request) }
 </div><div class="line">          [status, headers, body]
 </div><div class="line">        rescue Exception
-</div>
-</pre>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="source hidden" id="frame-source-50">
-        <div class="info">
-            Extracted source (around line <strong>#26</strong>):
-        </div>
-        <div class="data">
-            <table cellpadding="0" cellspacing="0" class="lines">
-                <tr>
-                    <td>
-              <pre class="line_numbers">
-<span>24</span>
-<span>25</span>
-<span>26</span>
-<span>27</span>
-<span>28</span>
-<span>29</span>
-              </pre>
-                    </td>
-                    <td width="100%">
-<pre>
-<div class="line">
-</div><div class="line">        if logger.respond_to?(:tagged)
-</div><div class="line active">          logger.tagged(compute_tags(request)) { call_app(request, env) }
-</div><div class="line">        else
-</div><div class="line">          call_app(request, env)
-</div><div class="line">        end
-</div>
-</pre>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="source hidden" id="frame-source-51">
-        <div class="info">
-            Extracted source (around line <strong>#71</strong>):
-        </div>
-        <div class="data">
-            <table cellpadding="0" cellspacing="0" class="lines">
-                <tr>
-                    <td>
-              <pre class="line_numbers">
-<span>69</span>
-<span>70</span>
-<span>71</span>
-<span>72</span>
-<span>73</span>
-<span>74</span>
-              </pre>
-                    </td>
-                    <td width="100%">
-<pre>
-<div class="line">
-</div><div class="line">    def tagged(*tags)
-</div><div class="line active">      formatter.tagged(*tags) { yield self }
-</div><div class="line">    end
-</div><div class="line">
-</div><div class="line">    def flush
-</div>
-</pre>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="source hidden" id="frame-source-52">
-        <div class="info">
-            Extracted source (around line <strong>#28</strong>):
-        </div>
-        <div class="data">
-            <table cellpadding="0" cellspacing="0" class="lines">
-                <tr>
-                    <td>
-              <pre class="line_numbers">
-<span>26</span>
-<span>27</span>
-<span>28</span>
-<span>29</span>
-<span>30</span>
-<span>31</span>
-              </pre>
-                    </td>
-                    <td width="100%">
-<pre>
-<div class="line">      def tagged(*tags)
-</div><div class="line">        new_tags = push_tags(*tags)
-</div><div class="line active">        yield self
-</div><div class="line">      ensure
-</div><div class="line">        pop_tags(new_tags.size)
-</div><div class="line">      end
-</div>
-</pre>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="source hidden" id="frame-source-53">
-        <div class="info">
-            Extracted source (around line <strong>#71</strong>):
-        </div>
-        <div class="data">
-            <table cellpadding="0" cellspacing="0" class="lines">
-                <tr>
-                    <td>
-              <pre class="line_numbers">
-<span>69</span>
-<span>70</span>
-<span>71</span>
-<span>72</span>
-<span>73</span>
-<span>74</span>
-              </pre>
-                    </td>
-                    <td width="100%">
-<pre>
-<div class="line">
-</div><div class="line">    def tagged(*tags)
-</div><div class="line active">      formatter.tagged(*tags) { yield self }
-</div><div class="line">    end
-</div><div class="line">
-</div><div class="line">    def flush
 </div>
 </pre>
                     </td>
@@ -1940,6 +1941,134 @@
     </div>
     <div class="source hidden" id="frame-source-55">
         <div class="info">
+            Extracted source (around line <strong>#71</strong>):
+        </div>
+        <div class="data">
+            <table cellpadding="0" cellspacing="0" class="lines">
+                <tr>
+                    <td>
+              <pre class="line_numbers">
+<span>69</span>
+<span>70</span>
+<span>71</span>
+<span>72</span>
+<span>73</span>
+<span>74</span>
+              </pre>
+                    </td>
+                    <td width="100%">
+<pre>
+<div class="line">
+</div><div class="line">    def tagged(*tags)
+</div><div class="line active">      formatter.tagged(*tags) { yield self }
+</div><div class="line">    end
+</div><div class="line">
+</div><div class="line">    def flush
+</div>
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="source hidden" id="frame-source-56">
+        <div class="info">
+            Extracted source (around line <strong>#28</strong>):
+        </div>
+        <div class="data">
+            <table cellpadding="0" cellspacing="0" class="lines">
+                <tr>
+                    <td>
+              <pre class="line_numbers">
+<span>26</span>
+<span>27</span>
+<span>28</span>
+<span>29</span>
+<span>30</span>
+<span>31</span>
+              </pre>
+                    </td>
+                    <td width="100%">
+<pre>
+<div class="line">      def tagged(*tags)
+</div><div class="line">        new_tags = push_tags(*tags)
+</div><div class="line active">        yield self
+</div><div class="line">      ensure
+</div><div class="line">        pop_tags(new_tags.size)
+</div><div class="line">      end
+</div>
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="source hidden" id="frame-source-57">
+        <div class="info">
+            Extracted source (around line <strong>#71</strong>):
+        </div>
+        <div class="data">
+            <table cellpadding="0" cellspacing="0" class="lines">
+                <tr>
+                    <td>
+              <pre class="line_numbers">
+<span>69</span>
+<span>70</span>
+<span>71</span>
+<span>72</span>
+<span>73</span>
+<span>74</span>
+              </pre>
+                    </td>
+                    <td width="100%">
+<pre>
+<div class="line">
+</div><div class="line">    def tagged(*tags)
+</div><div class="line active">      formatter.tagged(*tags) { yield self }
+</div><div class="line">    end
+</div><div class="line">
+</div><div class="line">    def flush
+</div>
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="source hidden" id="frame-source-58">
+        <div class="info">
+            Extracted source (around line <strong>#26</strong>):
+        </div>
+        <div class="data">
+            <table cellpadding="0" cellspacing="0" class="lines">
+                <tr>
+                    <td>
+              <pre class="line_numbers">
+<span>24</span>
+<span>25</span>
+<span>26</span>
+<span>27</span>
+<span>28</span>
+<span>29</span>
+              </pre>
+                    </td>
+                    <td width="100%">
+<pre>
+<div class="line">
+</div><div class="line">        if logger.respond_to?(:tagged)
+</div><div class="line active">          logger.tagged(compute_tags(request)) { call_app(request, env) }
+</div><div class="line">        else
+</div><div class="line">          call_app(request, env)
+</div><div class="line">        end
+</div>
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="source hidden" id="frame-source-59">
+        <div class="info">
             Extracted source (around line <strong>#13</strong>):
         </div>
         <div class="data">
@@ -1970,7 +2099,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-56">
+    <div class="source hidden" id="frame-source-60">
         <div class="info">
             Extracted source (around line <strong>#81</strong>):
         </div>
@@ -2002,7 +2131,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-57">
+    <div class="source hidden" id="frame-source-61">
         <div class="info">
             Extracted source (around line <strong>#27</strong>):
         </div>
@@ -2034,7 +2163,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-58">
+    <div class="source hidden" id="frame-source-62">
         <div class="info">
             Extracted source (around line <strong>#22</strong>):
         </div>
@@ -2066,7 +2195,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-59">
+    <div class="source hidden" id="frame-source-63">
         <div class="info">
             Extracted source (around line <strong>#22</strong>):
         </div>
@@ -2098,7 +2227,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-60">
+    <div class="source hidden" id="frame-source-64">
         <div class="info">
             Extracted source (around line <strong>#29</strong>):
         </div>
@@ -2130,7 +2259,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-61">
+    <div class="source hidden" id="frame-source-65">
         <div class="info">
             Extracted source (around line <strong>#14</strong>):
         </div>
@@ -2162,7 +2291,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-62">
+    <div class="source hidden" id="frame-source-66">
         <div class="info">
             Extracted source (around line <strong>#127</strong>):
         </div>
@@ -2194,7 +2323,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-63">
+    <div class="source hidden" id="frame-source-67">
         <div class="info">
             Extracted source (around line <strong>#111</strong>):
         </div>
@@ -2226,7 +2355,71 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-64">
+    <div class="source hidden" id="frame-source-68">
+        <div class="info">
+            Extracted source (around line <strong>#22</strong>):
+        </div>
+        <div class="data">
+            <table cellpadding="0" cellspacing="0" class="lines">
+                <tr>
+                    <td>
+              <pre class="line_numbers">
+<span>20</span>
+<span>21</span>
+<span>22</span>
+<span>23</span>
+<span>24</span>
+<span>25</span>
+              </pre>
+                    </td>
+                    <td width="100%">
+<pre>
+<div class="line">      super(env)
+</div><div class="line">    else
+</div><div class="line active">      @app.call(env)
+</div><div class="line">    end
+</div><div class="line">  end
+</div><div class="line">
+</div>
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="source hidden" id="frame-source-69">
+        <div class="info">
+            Extracted source (around line <strong>#57</strong>):
+        </div>
+        <div class="data">
+            <table cellpadding="0" cellspacing="0" class="lines">
+                <tr>
+                    <td>
+              <pre class="line_numbers">
+<span>55</span>
+<span>56</span>
+<span>57</span>
+<span>58</span>
+<span>59</span>
+<span>60</span>
+              </pre>
+                    </td>
+                    <td width="100%">
+<pre>
+<div class="line">
+</div><div class="line">    def call(env)
+</div><div class="line active">      rewrite_response(perform_request(rewrite_env(env)))
+</div><div class="line">    end
+</div><div class="line">
+</div><div class="line">    # Return modified env
+</div>
+</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="source hidden" id="frame-source-70">
         <div class="info">
             Extracted source (around line <strong>#524</strong>):
         </div>
@@ -2258,7 +2451,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-65">
+    <div class="source hidden" id="frame-source-71">
         <div class="info">
             Extracted source (around line <strong>#225</strong>):
         </div>
@@ -2290,7 +2483,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-66">
+    <div class="source hidden" id="frame-source-72">
         <div class="info">
             Extracted source (around line <strong>#658</strong>):
         </div>
@@ -2322,7 +2515,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-67">
+    <div class="source hidden" id="frame-source-73">
         <div class="info">
             Extracted source (around line <strong>#472</strong>):
         </div>
@@ -2354,7 +2547,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-68">
+    <div class="source hidden" id="frame-source-74">
         <div class="info">
             Extracted source (around line <strong>#332</strong>):
         </div>
@@ -2386,7 +2579,7 @@
             </table>
         </div>
     </div>
-    <div class="source hidden" id="frame-source-69">
+    <div class="source hidden" id="frame-source-75">
         <div class="info">
             Extracted source (around line <strong>#133</strong>):
         </div>
@@ -2433,159 +2626,172 @@
            onclick="hide(&#39;Application-Trace&#39;);hide(&#39;Framework-Trace&#39;);show(&#39;Full-Trace&#39;);; return false;">Full
             Trace</a>
 
-        <div id="Application-Trace" style="display: block;">
-            <pre><code><a class="trace-frames" data-frame-id="1" href="#">app/controllers/api/v2/api_controller.rb:37:in `expedition_params&#39;</a><br><a
-                    class="trace-frames" data-frame-id="2" href="#">app/controllers/api/v2/expeditions_controller.rb:5:in `update&#39;</a><br></code></pre>
+        <div id="Application-Trace" style="display: none;">
+            <pre><code></code></pre>
         </div>
         <div id="Framework-Trace" style="display: none;">
-            <pre><code><a class="trace-frames" data-frame-id="0" href="#">actionpack (5.2.2) lib/action_controller/metal/strong_parameters.rb:443:in `require&#39;</a><br><a
-                    class="trace-frames" data-frame-id="3" href="#">actionpack (5.2.2) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="4" href="#">actionpack (5.2.2) lib/abstract_controller/base.rb:194:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="5" href="#">actionpack (5.2.2) lib/action_controller/metal/rendering.rb:30:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="6" href="#">actionpack (5.2.2) lib/abstract_controller/callbacks.rb:42:in `block in process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="7" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:132:in `run_callbacks&#39;</a><br><a
-                    class="trace-frames" data-frame-id="8" href="#">actionpack (5.2.2) lib/abstract_controller/callbacks.rb:41:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="9" href="#">actionpack (5.2.2) lib/action_controller/metal/rescue.rb:22:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="10" href="#">actionpack (5.2.2) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="11" href="#">activesupport (5.2.2) lib/active_support/notifications.rb:168:in `block in instrument&#39;</a><br><a
-                    class="trace-frames" data-frame-id="12" href="#">activesupport (5.2.2) lib/active_support/notifications/instrumenter.rb:23:in `instrument&#39;</a><br><a
-                    class="trace-frames" data-frame-id="13" href="#">activesupport (5.2.2) lib/active_support/notifications.rb:168:in `instrument&#39;</a><br><a
-                    class="trace-frames" data-frame-id="14" href="#">actionpack (5.2.2) lib/action_controller/metal/instrumentation.rb:32:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="15" href="#">actionpack (5.2.2) lib/action_controller/metal/params_wrapper.rb:256:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="16" href="#">activerecord (5.2.2) lib/active_record/railties/controller_runtime.rb:24:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="17" href="#">actionpack (5.2.2) lib/abstract_controller/base.rb:134:in `process&#39;</a><br><a
-                    class="trace-frames" data-frame-id="18" href="#">actionview (5.2.2) lib/action_view/rendering.rb:32:in `process&#39;</a><br><a
-                    class="trace-frames" data-frame-id="19" href="#">actionpack (5.2.2) lib/action_controller/metal.rb:191:in `dispatch&#39;</a><br><a
-                    class="trace-frames" data-frame-id="20" href="#">actionpack (5.2.2) lib/action_controller/metal.rb:252:in `dispatch&#39;</a><br><a
-                    class="trace-frames" data-frame-id="21" href="#">actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:52:in `dispatch&#39;</a><br><a
-                    class="trace-frames" data-frame-id="22" href="#">actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:34:in `serve&#39;</a><br><a
-                    class="trace-frames" data-frame-id="23" href="#">actionpack (5.2.2) lib/action_dispatch/journey/router.rb:52:in `block in serve&#39;</a><br><a
-                    class="trace-frames" data-frame-id="24" href="#">actionpack (5.2.2) lib/action_dispatch/journey/router.rb:35:in `each&#39;</a><br><a
-                    class="trace-frames" data-frame-id="25" href="#">actionpack (5.2.2) lib/action_dispatch/journey/router.rb:35:in `serve&#39;</a><br><a
-                    class="trace-frames" data-frame-id="26" href="#">actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:840:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="27" href="#">warden (1.2.8) lib/warden/manager.rb:36:in `block in call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="28" href="#">warden (1.2.8) lib/warden/manager.rb:34:in `catch&#39;</a><br><a
-                    class="trace-frames" data-frame-id="29" href="#">warden (1.2.8) lib/warden/manager.rb:34:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="30" href="#">rack (2.0.6) lib/rack/tempfile_reaper.rb:15:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="31"
+            <pre><code><a class="trace-frames" data-frame-id="0" href="#">actionpack (5.2.2) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="1" href="#">actionpack (5.2.2) lib/action_controller/metal/request_forgery_protection.rb:243:in `handle_unverified_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="2" href="#">devise (4.5.0) lib/devise/controllers/helpers.rb:255:in `handle_unverified_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="3" href="#">actionpack (5.2.2) lib/action_controller/metal/request_forgery_protection.rb:238:in `verify_authenticity_token&#39;</a><br><a
+                    class="trace-frames" data-frame-id="4" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:426:in `block in make_lambda&#39;</a><br><a
+                    class="trace-frames" data-frame-id="5" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting&#39;</a><br><a
+                    class="trace-frames" data-frame-id="6" href="#">actionpack (5.2.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in &lt;module:Callbacks&gt;&#39;</a><br><a
+                    class="trace-frames" data-frame-id="7" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:199:in `block in halting&#39;</a><br><a
+                    class="trace-frames" data-frame-id="8" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:513:in `block in invoke_before&#39;</a><br><a
+                    class="trace-frames" data-frame-id="9" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:513:in `each&#39;</a><br><a
+                    class="trace-frames" data-frame-id="10" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:513:in `invoke_before&#39;</a><br><a
+                    class="trace-frames" data-frame-id="11" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:131:in `run_callbacks&#39;</a><br><a
+                    class="trace-frames" data-frame-id="12" href="#">actionpack (5.2.2) lib/abstract_controller/callbacks.rb:41:in `process_action&#39;</a><br><a
+                    class="trace-frames" data-frame-id="13" href="#">actionpack (5.2.2) lib/action_controller/metal/rescue.rb:22:in `process_action&#39;</a><br><a
+                    class="trace-frames" data-frame-id="14" href="#">actionpack (5.2.2) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action&#39;</a><br><a
+                    class="trace-frames" data-frame-id="15" href="#">activesupport (5.2.2) lib/active_support/notifications.rb:168:in `block in instrument&#39;</a><br><a
+                    class="trace-frames" data-frame-id="16" href="#">activesupport (5.2.2) lib/active_support/notifications/instrumenter.rb:23:in `instrument&#39;</a><br><a
+                    class="trace-frames" data-frame-id="17" href="#">activesupport (5.2.2) lib/active_support/notifications.rb:168:in `instrument&#39;</a><br><a
+                    class="trace-frames" data-frame-id="18" href="#">actionpack (5.2.2) lib/action_controller/metal/instrumentation.rb:32:in `process_action&#39;</a><br><a
+                    class="trace-frames" data-frame-id="19" href="#">actionpack (5.2.2) lib/action_controller/metal/params_wrapper.rb:256:in `process_action&#39;</a><br><a
+                    class="trace-frames" data-frame-id="20" href="#">activerecord (5.2.2) lib/active_record/railties/controller_runtime.rb:24:in `process_action&#39;</a><br><a
+                    class="trace-frames" data-frame-id="21" href="#">actionpack (5.2.2) lib/abstract_controller/base.rb:134:in `process&#39;</a><br><a
+                    class="trace-frames" data-frame-id="22" href="#">actionview (5.2.2) lib/action_view/rendering.rb:32:in `process&#39;</a><br><a
+                    class="trace-frames" data-frame-id="23" href="#">actionpack (5.2.2) lib/action_controller/metal.rb:191:in `dispatch&#39;</a><br><a
+                    class="trace-frames" data-frame-id="24" href="#">actionpack (5.2.2) lib/action_controller/metal.rb:252:in `dispatch&#39;</a><br><a
+                    class="trace-frames" data-frame-id="25" href="#">actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:52:in `dispatch&#39;</a><br><a
+                    class="trace-frames" data-frame-id="26" href="#">actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:34:in `serve&#39;</a><br><a
+                    class="trace-frames" data-frame-id="27" href="#">actionpack (5.2.2) lib/action_dispatch/journey/router.rb:52:in `block in serve&#39;</a><br><a
+                    class="trace-frames" data-frame-id="28" href="#">actionpack (5.2.2) lib/action_dispatch/journey/router.rb:35:in `each&#39;</a><br><a
+                    class="trace-frames" data-frame-id="29" href="#">actionpack (5.2.2) lib/action_dispatch/journey/router.rb:35:in `serve&#39;</a><br><a
+                    class="trace-frames" data-frame-id="30" href="#">actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:840:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="31" href="#">warden (1.2.8) lib/warden/manager.rb:36:in `block in call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="32" href="#">warden (1.2.8) lib/warden/manager.rb:34:in `catch&#39;</a><br><a
+                    class="trace-frames" data-frame-id="33" href="#">warden (1.2.8) lib/warden/manager.rb:34:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="34" href="#">rack (2.0.6) lib/rack/tempfile_reaper.rb:15:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="35"
                     href="#">rack (2.0.6) lib/rack/etag.rb:25:in `call&#39;</a><br><a class="trace-frames"
-                                                                                      data-frame-id="32" href="#">rack (2.0.6) lib/rack/conditional_get.rb:38:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="33"
+                                                                                      data-frame-id="36" href="#">rack (2.0.6) lib/rack/conditional_get.rb:38:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="37"
                     href="#">rack (2.0.6) lib/rack/head.rb:12:in `call&#39;</a><br><a class="trace-frames"
-                                                                                      data-frame-id="34" href="#">actionpack (5.2.2) lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="35" href="#">rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context&#39;</a><br><a
-                    class="trace-frames" data-frame-id="36" href="#">rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="37" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/cookies.rb:670:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="38" href="#">activerecord (5.2.2) lib/active_record/migration.rb:559:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="39" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="40" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:98:in `run_callbacks&#39;</a><br><a
-                    class="trace-frames" data-frame-id="41" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="42" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="43" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="44" href="#">web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app&#39;</a><br><a
-                    class="trace-frames" data-frame-id="45" href="#">web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="46" href="#">web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch&#39;</a><br><a
-                    class="trace-frames" data-frame-id="47" href="#">web-console (3.7.0) lib/web_console/middleware.rb:20:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="48" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="49" href="#">railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app&#39;</a><br><a
-                    class="trace-frames" data-frame-id="50" href="#">railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="51" href="#">activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;</a><br><a
-                    class="trace-frames" data-frame-id="52" href="#">activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged&#39;</a><br><a
-                    class="trace-frames" data-frame-id="53" href="#">activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged&#39;</a><br><a
-                    class="trace-frames" data-frame-id="54" href="#">railties (5.2.2) lib/rails/rack/logger.rb:26:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="55" href="#">sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="56" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="57" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="58" href="#">rack (2.0.6) lib/rack/method_override.rb:22:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="59"
-                    href="#">rack (2.0.6) lib/rack/runtime.rb:22:in `call&#39;</a><br><a class="trace-frames"
-                                                                                         data-frame-id="60" href="#">activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="61" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="62" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call&#39;</a><br><a
+                                                                                      data-frame-id="38" href="#">actionpack (5.2.2) lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="39" href="#">rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context&#39;</a><br><a
+                    class="trace-frames" data-frame-id="40" href="#">rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="41" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/cookies.rb:670:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="42" href="#">activerecord (5.2.2) lib/active_record/migration.rb:559:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="43" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="44" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:98:in `run_callbacks&#39;</a><br><a
+                    class="trace-frames" data-frame-id="45" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="46" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="47" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="48" href="#">web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app&#39;</a><br><a
+                    class="trace-frames" data-frame-id="49" href="#">web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="50" href="#">web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch&#39;</a><br><a
+                    class="trace-frames" data-frame-id="51" href="#">web-console (3.7.0) lib/web_console/middleware.rb:20:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="52" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="53" href="#">railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app&#39;</a><br><a
+                    class="trace-frames" data-frame-id="54" href="#">railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="55" href="#">activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;</a><br><a
+                    class="trace-frames" data-frame-id="56" href="#">activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged&#39;</a><br><a
+                    class="trace-frames" data-frame-id="57" href="#">activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged&#39;</a><br><a
+                    class="trace-frames" data-frame-id="58" href="#">railties (5.2.2) lib/rails/rack/logger.rb:26:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="59" href="#">sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="60" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="61" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="62" href="#">rack (2.0.6) lib/rack/method_override.rb:22:in `call&#39;</a><br><a
                     class="trace-frames" data-frame-id="63"
+                    href="#">rack (2.0.6) lib/rack/runtime.rb:22:in `call&#39;</a><br><a class="trace-frames"
+                                                                                         data-frame-id="64" href="#">activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="65" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="66" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="67"
                     href="#">rack (2.0.6) lib/rack/sendfile.rb:111:in `call&#39;</a><br><a class="trace-frames"
-                                                                                           data-frame-id="64" href="#">railties (5.2.2) lib/rails/engine.rb:524:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="65" href="#">puma (3.12.0) lib/puma/configuration.rb:225:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="66" href="#">puma (3.12.0) lib/puma/server.rb:658:in `handle_request&#39;</a><br><a
-                    class="trace-frames" data-frame-id="67" href="#">puma (3.12.0) lib/puma/server.rb:472:in `process_client&#39;</a><br><a
-                    class="trace-frames" data-frame-id="68" href="#">puma (3.12.0) lib/puma/server.rb:332:in `block in run&#39;</a><br><a
-                    class="trace-frames" data-frame-id="69" href="#">puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread&#39;</a><br></code></pre>
+                                                                                           data-frame-id="68" href="#">webpacker (3.5.5) lib/webpacker/dev_server_proxy.rb:22:in `perform_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="69" href="#">rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="70" href="#">railties (5.2.2) lib/rails/engine.rb:524:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="71" href="#">puma (3.12.0) lib/puma/configuration.rb:225:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="72" href="#">puma (3.12.0) lib/puma/server.rb:658:in `handle_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="73" href="#">puma (3.12.0) lib/puma/server.rb:472:in `process_client&#39;</a><br><a
+                    class="trace-frames" data-frame-id="74" href="#">puma (3.12.0) lib/puma/server.rb:332:in `block in run&#39;</a><br><a
+                    class="trace-frames" data-frame-id="75" href="#">puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread&#39;</a><br></code></pre>
         </div>
-        <div id="Full-Trace" style="display: none;">
-            <pre><code><a class="trace-frames" data-frame-id="0" href="#">actionpack (5.2.2) lib/action_controller/metal/strong_parameters.rb:443:in `require&#39;</a><br><a
-                    class="trace-frames" data-frame-id="1" href="#">app/controllers/api/v2/api_controller.rb:37:in `expedition_params&#39;</a><br><a
-                    class="trace-frames" data-frame-id="2" href="#">app/controllers/api/v2/expeditions_controller.rb:5:in `update&#39;</a><br><a
-                    class="trace-frames" data-frame-id="3" href="#">actionpack (5.2.2) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="4" href="#">actionpack (5.2.2) lib/abstract_controller/base.rb:194:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="5" href="#">actionpack (5.2.2) lib/action_controller/metal/rendering.rb:30:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="6" href="#">actionpack (5.2.2) lib/abstract_controller/callbacks.rb:42:in `block in process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="7" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:132:in `run_callbacks&#39;</a><br><a
-                    class="trace-frames" data-frame-id="8" href="#">actionpack (5.2.2) lib/abstract_controller/callbacks.rb:41:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="9" href="#">actionpack (5.2.2) lib/action_controller/metal/rescue.rb:22:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="10" href="#">actionpack (5.2.2) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="11" href="#">activesupport (5.2.2) lib/active_support/notifications.rb:168:in `block in instrument&#39;</a><br><a
-                    class="trace-frames" data-frame-id="12" href="#">activesupport (5.2.2) lib/active_support/notifications/instrumenter.rb:23:in `instrument&#39;</a><br><a
-                    class="trace-frames" data-frame-id="13" href="#">activesupport (5.2.2) lib/active_support/notifications.rb:168:in `instrument&#39;</a><br><a
-                    class="trace-frames" data-frame-id="14" href="#">actionpack (5.2.2) lib/action_controller/metal/instrumentation.rb:32:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="15" href="#">actionpack (5.2.2) lib/action_controller/metal/params_wrapper.rb:256:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="16" href="#">activerecord (5.2.2) lib/active_record/railties/controller_runtime.rb:24:in `process_action&#39;</a><br><a
-                    class="trace-frames" data-frame-id="17" href="#">actionpack (5.2.2) lib/abstract_controller/base.rb:134:in `process&#39;</a><br><a
-                    class="trace-frames" data-frame-id="18" href="#">actionview (5.2.2) lib/action_view/rendering.rb:32:in `process&#39;</a><br><a
-                    class="trace-frames" data-frame-id="19" href="#">actionpack (5.2.2) lib/action_controller/metal.rb:191:in `dispatch&#39;</a><br><a
-                    class="trace-frames" data-frame-id="20" href="#">actionpack (5.2.2) lib/action_controller/metal.rb:252:in `dispatch&#39;</a><br><a
-                    class="trace-frames" data-frame-id="21" href="#">actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:52:in `dispatch&#39;</a><br><a
-                    class="trace-frames" data-frame-id="22" href="#">actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:34:in `serve&#39;</a><br><a
-                    class="trace-frames" data-frame-id="23" href="#">actionpack (5.2.2) lib/action_dispatch/journey/router.rb:52:in `block in serve&#39;</a><br><a
-                    class="trace-frames" data-frame-id="24" href="#">actionpack (5.2.2) lib/action_dispatch/journey/router.rb:35:in `each&#39;</a><br><a
-                    class="trace-frames" data-frame-id="25" href="#">actionpack (5.2.2) lib/action_dispatch/journey/router.rb:35:in `serve&#39;</a><br><a
-                    class="trace-frames" data-frame-id="26" href="#">actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:840:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="27" href="#">warden (1.2.8) lib/warden/manager.rb:36:in `block in call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="28" href="#">warden (1.2.8) lib/warden/manager.rb:34:in `catch&#39;</a><br><a
-                    class="trace-frames" data-frame-id="29" href="#">warden (1.2.8) lib/warden/manager.rb:34:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="30" href="#">rack (2.0.6) lib/rack/tempfile_reaper.rb:15:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="31"
+        <div id="Full-Trace" style="display: block;">
+            <pre><code><a class="trace-frames" data-frame-id="0" href="#">actionpack (5.2.2) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="1" href="#">actionpack (5.2.2) lib/action_controller/metal/request_forgery_protection.rb:243:in `handle_unverified_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="2" href="#">devise (4.5.0) lib/devise/controllers/helpers.rb:255:in `handle_unverified_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="3" href="#">actionpack (5.2.2) lib/action_controller/metal/request_forgery_protection.rb:238:in `verify_authenticity_token&#39;</a><br><a
+                    class="trace-frames" data-frame-id="4" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:426:in `block in make_lambda&#39;</a><br><a
+                    class="trace-frames" data-frame-id="5" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting&#39;</a><br><a
+                    class="trace-frames" data-frame-id="6" href="#">actionpack (5.2.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in &lt;module:Callbacks&gt;&#39;</a><br><a
+                    class="trace-frames" data-frame-id="7" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:199:in `block in halting&#39;</a><br><a
+                    class="trace-frames" data-frame-id="8" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:513:in `block in invoke_before&#39;</a><br><a
+                    class="trace-frames" data-frame-id="9" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:513:in `each&#39;</a><br><a
+                    class="trace-frames" data-frame-id="10" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:513:in `invoke_before&#39;</a><br><a
+                    class="trace-frames" data-frame-id="11" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:131:in `run_callbacks&#39;</a><br><a
+                    class="trace-frames" data-frame-id="12" href="#">actionpack (5.2.2) lib/abstract_controller/callbacks.rb:41:in `process_action&#39;</a><br><a
+                    class="trace-frames" data-frame-id="13" href="#">actionpack (5.2.2) lib/action_controller/metal/rescue.rb:22:in `process_action&#39;</a><br><a
+                    class="trace-frames" data-frame-id="14" href="#">actionpack (5.2.2) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action&#39;</a><br><a
+                    class="trace-frames" data-frame-id="15" href="#">activesupport (5.2.2) lib/active_support/notifications.rb:168:in `block in instrument&#39;</a><br><a
+                    class="trace-frames" data-frame-id="16" href="#">activesupport (5.2.2) lib/active_support/notifications/instrumenter.rb:23:in `instrument&#39;</a><br><a
+                    class="trace-frames" data-frame-id="17" href="#">activesupport (5.2.2) lib/active_support/notifications.rb:168:in `instrument&#39;</a><br><a
+                    class="trace-frames" data-frame-id="18" href="#">actionpack (5.2.2) lib/action_controller/metal/instrumentation.rb:32:in `process_action&#39;</a><br><a
+                    class="trace-frames" data-frame-id="19" href="#">actionpack (5.2.2) lib/action_controller/metal/params_wrapper.rb:256:in `process_action&#39;</a><br><a
+                    class="trace-frames" data-frame-id="20" href="#">activerecord (5.2.2) lib/active_record/railties/controller_runtime.rb:24:in `process_action&#39;</a><br><a
+                    class="trace-frames" data-frame-id="21" href="#">actionpack (5.2.2) lib/abstract_controller/base.rb:134:in `process&#39;</a><br><a
+                    class="trace-frames" data-frame-id="22" href="#">actionview (5.2.2) lib/action_view/rendering.rb:32:in `process&#39;</a><br><a
+                    class="trace-frames" data-frame-id="23" href="#">actionpack (5.2.2) lib/action_controller/metal.rb:191:in `dispatch&#39;</a><br><a
+                    class="trace-frames" data-frame-id="24" href="#">actionpack (5.2.2) lib/action_controller/metal.rb:252:in `dispatch&#39;</a><br><a
+                    class="trace-frames" data-frame-id="25" href="#">actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:52:in `dispatch&#39;</a><br><a
+                    class="trace-frames" data-frame-id="26" href="#">actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:34:in `serve&#39;</a><br><a
+                    class="trace-frames" data-frame-id="27" href="#">actionpack (5.2.2) lib/action_dispatch/journey/router.rb:52:in `block in serve&#39;</a><br><a
+                    class="trace-frames" data-frame-id="28" href="#">actionpack (5.2.2) lib/action_dispatch/journey/router.rb:35:in `each&#39;</a><br><a
+                    class="trace-frames" data-frame-id="29" href="#">actionpack (5.2.2) lib/action_dispatch/journey/router.rb:35:in `serve&#39;</a><br><a
+                    class="trace-frames" data-frame-id="30" href="#">actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:840:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="31" href="#">warden (1.2.8) lib/warden/manager.rb:36:in `block in call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="32" href="#">warden (1.2.8) lib/warden/manager.rb:34:in `catch&#39;</a><br><a
+                    class="trace-frames" data-frame-id="33" href="#">warden (1.2.8) lib/warden/manager.rb:34:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="34" href="#">rack (2.0.6) lib/rack/tempfile_reaper.rb:15:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="35"
                     href="#">rack (2.0.6) lib/rack/etag.rb:25:in `call&#39;</a><br><a class="trace-frames"
-                                                                                      data-frame-id="32" href="#">rack (2.0.6) lib/rack/conditional_get.rb:38:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="33"
+                                                                                      data-frame-id="36" href="#">rack (2.0.6) lib/rack/conditional_get.rb:38:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="37"
                     href="#">rack (2.0.6) lib/rack/head.rb:12:in `call&#39;</a><br><a class="trace-frames"
-                                                                                      data-frame-id="34" href="#">actionpack (5.2.2) lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="35" href="#">rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context&#39;</a><br><a
-                    class="trace-frames" data-frame-id="36" href="#">rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="37" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/cookies.rb:670:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="38" href="#">activerecord (5.2.2) lib/active_record/migration.rb:559:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="39" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="40" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:98:in `run_callbacks&#39;</a><br><a
-                    class="trace-frames" data-frame-id="41" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="42" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="43" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="44" href="#">web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app&#39;</a><br><a
-                    class="trace-frames" data-frame-id="45" href="#">web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="46" href="#">web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch&#39;</a><br><a
-                    class="trace-frames" data-frame-id="47" href="#">web-console (3.7.0) lib/web_console/middleware.rb:20:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="48" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="49" href="#">railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app&#39;</a><br><a
-                    class="trace-frames" data-frame-id="50" href="#">railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="51" href="#">activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;</a><br><a
-                    class="trace-frames" data-frame-id="52" href="#">activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged&#39;</a><br><a
-                    class="trace-frames" data-frame-id="53" href="#">activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged&#39;</a><br><a
-                    class="trace-frames" data-frame-id="54" href="#">railties (5.2.2) lib/rails/rack/logger.rb:26:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="55" href="#">sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="56" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="57" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="58" href="#">rack (2.0.6) lib/rack/method_override.rb:22:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="59"
-                    href="#">rack (2.0.6) lib/rack/runtime.rb:22:in `call&#39;</a><br><a class="trace-frames"
-                                                                                         data-frame-id="60" href="#">activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="61" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="62" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call&#39;</a><br><a
+                                                                                      data-frame-id="38" href="#">actionpack (5.2.2) lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="39" href="#">rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context&#39;</a><br><a
+                    class="trace-frames" data-frame-id="40" href="#">rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="41" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/cookies.rb:670:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="42" href="#">activerecord (5.2.2) lib/active_record/migration.rb:559:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="43" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="44" href="#">activesupport (5.2.2) lib/active_support/callbacks.rb:98:in `run_callbacks&#39;</a><br><a
+                    class="trace-frames" data-frame-id="45" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="46" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="47" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="48" href="#">web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app&#39;</a><br><a
+                    class="trace-frames" data-frame-id="49" href="#">web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="50" href="#">web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch&#39;</a><br><a
+                    class="trace-frames" data-frame-id="51" href="#">web-console (3.7.0) lib/web_console/middleware.rb:20:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="52" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="53" href="#">railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app&#39;</a><br><a
+                    class="trace-frames" data-frame-id="54" href="#">railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="55" href="#">activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;</a><br><a
+                    class="trace-frames" data-frame-id="56" href="#">activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged&#39;</a><br><a
+                    class="trace-frames" data-frame-id="57" href="#">activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged&#39;</a><br><a
+                    class="trace-frames" data-frame-id="58" href="#">railties (5.2.2) lib/rails/rack/logger.rb:26:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="59" href="#">sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="60" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="61" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="62" href="#">rack (2.0.6) lib/rack/method_override.rb:22:in `call&#39;</a><br><a
                     class="trace-frames" data-frame-id="63"
+                    href="#">rack (2.0.6) lib/rack/runtime.rb:22:in `call&#39;</a><br><a class="trace-frames"
+                                                                                         data-frame-id="64" href="#">activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="65" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="66" href="#">actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="67"
                     href="#">rack (2.0.6) lib/rack/sendfile.rb:111:in `call&#39;</a><br><a class="trace-frames"
-                                                                                           data-frame-id="64" href="#">railties (5.2.2) lib/rails/engine.rb:524:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="65" href="#">puma (3.12.0) lib/puma/configuration.rb:225:in `call&#39;</a><br><a
-                    class="trace-frames" data-frame-id="66" href="#">puma (3.12.0) lib/puma/server.rb:658:in `handle_request&#39;</a><br><a
-                    class="trace-frames" data-frame-id="67" href="#">puma (3.12.0) lib/puma/server.rb:472:in `process_client&#39;</a><br><a
-                    class="trace-frames" data-frame-id="68" href="#">puma (3.12.0) lib/puma/server.rb:332:in `block in run&#39;</a><br><a
-                    class="trace-frames" data-frame-id="69" href="#">puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread&#39;</a><br></code></pre>
+                                                                                           data-frame-id="68" href="#">webpacker (3.5.5) lib/webpacker/dev_server_proxy.rb:22:in `perform_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="69" href="#">rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="70" href="#">railties (5.2.2) lib/rails/engine.rb:524:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="71" href="#">puma (3.12.0) lib/puma/configuration.rb:225:in `call&#39;</a><br><a
+                    class="trace-frames" data-frame-id="72" href="#">puma (3.12.0) lib/puma/server.rb:658:in `handle_request&#39;</a><br><a
+                    class="trace-frames" data-frame-id="73" href="#">puma (3.12.0) lib/puma/server.rb:472:in `process_client&#39;</a><br><a
+                    class="trace-frames" data-frame-id="74" href="#">puma (3.12.0) lib/puma/server.rb:332:in `block in run&#39;</a><br><a
+                    class="trace-frames" data-frame-id="75" href="#">puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread&#39;</a><br></code></pre>
         </div>
 
         <script type="text/javascript">
@@ -2625,7 +2831,7 @@
 
     <h2 style="margin-top: 30px">Request</h2>
     <p><b>Parameters</b>:</p>
-    <pre>{&quot;title&quot;=&gt;&quot;Milky Wayyy&quot;, &quot;description&quot;=&gt;&quot;This is very importnat!!&quot;, &quot;id&quot;=&gt;&quot;8&quot;}
+    <pre>{&quot;id&quot;=&gt;&quot;8&quot;, &quot;format&quot;=&gt;&quot;json&quot;}
 </pre>
 
     <div class="details">
@@ -2658,7 +2864,7 @@ SERVER_PROTOCOL: &quot;HTTP/1.1&quot;</pre>
 
 <div id="console"
      data-mount-point='/__web_console'
-     data-session-id='f6d3e8d8beb3e7575676a3598113fb40'
+     data-session-id='72538c540f31127699f25b75dcbd8416'
      data-prompt-label='>> '>
 </div>
 

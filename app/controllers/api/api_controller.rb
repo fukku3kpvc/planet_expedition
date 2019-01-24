@@ -4,6 +4,7 @@ module Api
     include ActiveRecord::SecureToken::ClassMethods
 
     protected
+
     skip_before_action :authenticate_user!
     before_action :login_auth
 

@@ -1,0 +1,24 @@
+{
+  "data": {
+    "id": "8",
+    "type": "expedition",
+    "attributes": {
+      "title": "Milky Way",
+      "distance": 859.0
+    },
+    "relationships": {
+      "spaceships": {
+        "data": [
+          {
+            "id": "1",
+            "type": "spaceship"
+          },
+          {
+            "id": "9",
+            "type": "spaceship"
+          }
+        ]
+      }
+    }
+  }
+}

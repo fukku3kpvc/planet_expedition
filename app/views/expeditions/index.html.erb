@@ -6,4 +6,7 @@
   <h2><%= expedition.title %></h2>
   <p><%= expedition.description %></p>
   <%= link_to 'Show', expedition_path(expedition) %>
-<% end %>
+<% end %> <br>
+<%= link_to 'dom', '#', id: 'dom' %>
+
+<%= render 'shared/slider' %>
