@@ -12,12 +12,12 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree .
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
 //= require slider
+//= require ajax
+//= require es6
 $(function(){
     $('#dom').on('click', function (e) {
         e.preventDefault();

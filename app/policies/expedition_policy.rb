@@ -14,4 +14,8 @@ class ExpeditionPolicy < ApplicationPolicy
   def show?
     user.cosmonaut? || user.commandor?
   end
+
+  def destroy?
+    user.commandor?
+  end
 end

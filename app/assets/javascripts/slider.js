@@ -1,5 +1,3 @@
-//= require jquery3
-
 $(function() {
     const PREFIX = '/assets/slider/';
     let slides = ['slide1.jpg', 'slide2.jpg', 'slide3.jpg', 'slide4.jpg'];
