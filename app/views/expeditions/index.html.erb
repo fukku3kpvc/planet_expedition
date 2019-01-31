@@ -3,7 +3,7 @@
   <p><%= link_to 'Create Expedition', new_expedition_path, remote: true, class: 'btn btn-success' %></p>
 <% end %>
 <div class="expedition-list">
-  <% @expedition.each do |expedition| %>
+  <% @expedition.reverse_each do |expedition| %>
     <div id="expedition_<%= expedition.id %>">
       <h2><%= expedition.title %></h2>
       <p><%= expedition.description %></p>

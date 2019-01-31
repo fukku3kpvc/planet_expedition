@@ -16,8 +16,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require slider
-//= require ajax
-//= require es6
+
 $(function(){
     $('#dom').on('click', function (e) {
         e.preventDefault();

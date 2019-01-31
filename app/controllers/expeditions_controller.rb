@@ -26,7 +26,10 @@ class ExpeditionsController < ApplicationController
     authorize Expedition
     @expedition = Expedition.new(expedition_params)
     if @expedition.save
-      redirect_to expeditions_path, notice: 'Сохранение прошло успешно'
+      respond_to do |format|
+        format.html { redirect_to expeditions_path, notice: 'Сохранение прошло успешно' }
+        format.js
+      end
     else
       flash[:alert] = 'Во время сохранения произошли ошибки'
       render :new

@@ -1,11 +1,12 @@
-<div class="container">
-  <%= simple_form_for @expedition do |form| %>
+<div class="container" id="new-expedition-form">
+  <% url = @expedition.new_record? ? url_for(controller: 'expeditions', action: 'create', method: 'post') : url_for(controller: 'expeditions', action: 'update', method: 'put') %>
+  <%= simple_form_for @expedition, remote: true, url: url do |form| %>
     <%= form.input :title %>
     <%= form.input :description %>
     <%#= form.association :expedition, collection: Expedition.all, label_method: :title, value_method: :id %>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <%= form.submit class: "btn btn-primary" %>
+      <button type="button" class="btn btn-secondary" id="close-expedition" data-dismiss="modal">Close</button>
+      <%= form.submit class: "btn btn-primary", id: 'create-expedition' %>
     </div>
   <% end %>
 </div>

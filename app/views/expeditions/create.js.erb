@@ -1,0 +1,5 @@
+console.log('create expedition ajax')
+$(function () {
+    $('.expedition-list').prepend('<%= escape_javascript(render @expedition) %>');
+    $('#new-expedition-form').remove();
+});

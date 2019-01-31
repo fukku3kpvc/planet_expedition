@@ -5,4 +5,11 @@ $(function () {
     else {
         console.log('class present')
     }
+
+    $('#close-expedition').on('click', closeExpedition);
+
+    function closeExpedition(event) {
+        event.preventDefault();
+        $('#new-expedition-form').remove();
+    }
 })
