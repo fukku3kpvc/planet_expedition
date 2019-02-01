@@ -1,0 +1,15 @@
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="InputQuery">Поиск вакансий с галактики HH:</label>
+      <div class="row">
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="InputQuery" placeholder="Enter query">
+        </div>
+        <div class="col-sm-2">
+          <%= link_to 'Search', '/search', class: 'btn btn-info', id: 'search-btn' %>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

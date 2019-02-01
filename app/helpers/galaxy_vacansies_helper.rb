@@ -1,0 +1,2 @@
+module GalaxyVacansiesHelper
+end

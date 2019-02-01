@@ -56,6 +56,9 @@
             <a class="dropdown-item" href="/spaceships">Космические корабли</a>
             <a class="dropdown-item" href="#">Команды</a>
           </div>
+        <li>
+          <%= link_to 'Вакансии', galaxy_vacansies_search_path, class: 'nav-link' %>
+        </li>
         </li>
         <% if user_signed_in? %>
           <li>

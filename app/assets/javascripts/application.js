@@ -16,6 +16,8 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require slider
+//= require es6
+//= require galaxy_vacansies
 
 $(function(){
     $('#dom').on('click', function (e) {

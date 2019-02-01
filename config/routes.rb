@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'galaxy_vacancies/search'
+  get 'galaxy_vacansies/search'
   devise_for :users, controllers: { registrations: "registrations" }
   resources :expeditions
   resources :planets
