@@ -1,0 +1,14 @@
+<tr id="raw-<%= spaceship.id %>">
+  <td><%= link_to spaceship.title, spaceship_path(spaceship) %></td>
+  <% if policy(Spaceship).edit? %>
+    <td><%= link_to 'Edit', edit_spaceship_path(spaceship), class: 'btn btn-warning' %></td>
+  <% else %>
+    <td><%= link_to 'blocked', '#', class: 'btn btn-warning' %></td>
+  <% end %>
+  <% if policy(Spaceship).destroy? %>
+    <td><%= link_to 'Destroy', spaceship_path(spaceship), remote: true, class: 'btn btn-danger',
+                    method: :delete, data: { confirm:  'Sure?' } %></td>
+  <% else %>
+    <td><%= link_to 'blocked', '#', class: 'btn btn-danger' %></td>
+  <% end %>
+</tr>

@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
   get 'galaxy_vacansies/search'
   devise_for :users, controllers: { registrations: "registrations" }
-  resources :expeditions
+  resources :expeditions do
+    get 'react', on: :collection
+  end
   resources :planets
-  resources :spaceships
+  resources :spaceships do
+    get 'react', on: :collection
+  end
   resources :galaxies
   resources :itinerary_entries
   resources :itineraries
+  get 'chats/index', to: 'chats#index'
+  post 'chats/new_message', to: 'chats#new_message'
 
   root "expeditions#index"
 

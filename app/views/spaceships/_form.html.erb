@@ -1,11 +1,12 @@
 <div class="container">
-  <%= simple_form_for @spaceship do |form| %>
+  <% url = @spaceship.new_record? ? url_for(controller: 'spaceships', action: 'create', method: 'post') : url_for(controller: 'spaceships', action: 'update', method: 'put') %>
+  <%= simple_form_for @spaceship, remote: true, url: url do |form| %>
     <%= form.input :title %>
     <%= form.input :velocity, as: :float %>
     <%= form.association :expedition, collection: Expedition.all, label_method: :title, value_method: :id %>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    <%= form.submit class: "btn btn-primary" %>
-  </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
   <% end %>
 </div>

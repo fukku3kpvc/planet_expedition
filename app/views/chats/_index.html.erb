@@ -1,0 +1,15 @@
+<h1>Chat</h1>
+<div class="chat">
+  <div class="messages">
+    <div class="message">
+      <span class="user">User: <%= current_user.email %></span> Let's chat!
+    </div>
+    <div class="message-box">
+
+    </div>
+  </div>
+  <%= form_tag :controller => :chats, :action => :new_message do %>
+    <%= text_field_tag :message_input %>
+    <%= button_tag 'Send message' %>
+  <% end %>
+</div>

@@ -5,7 +5,6 @@ $(function () {
     $('#search-btn').on('click', doSearch);
     $('#InputQuery').keydown(function (e) {
         if (e.keyCode === 13) {
-            console.log(e.keyCode);
             e.preventDefault();
             $('#search-btn').click();
         }
@@ -33,7 +32,6 @@ $(function () {
         fetch(URL)
             .then((response) => { return response.json(); })
             .then((result) => result.items.forEach((item) => {
-                console.log(result);
                 let tr = document.createElement('tr');
                 tbody.appendChild(tr);
                 let td1 = document.createElement('td');

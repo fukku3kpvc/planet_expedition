@@ -3,14 +3,7 @@
   <p><%= link_to 'Create Expedition', new_expedition_path, remote: true, class: 'btn btn-success' %></p>
 <% end %>
 <div class="expedition-list">
-  <% @expedition.reverse_each do |expedition| %>
-    <div id="expedition_<%= expedition.id %>">
-      <h2><%= expedition.title %></h2>
-      <p><%= expedition.description %></p>
-      <%= link_to 'Show', expedition_path(expedition) %>
-      <%= link_to 'Delete', expedition_path(expedition), remote: true, method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
-    </div>
-  <% end %>
+  <%= render partial: "expeditions/expedition", collection: @expeditions %>
 </div>
 <%= link_to 'dom', '#', id: 'dom' %>
 

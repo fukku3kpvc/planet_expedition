@@ -1,9 +1,12 @@
 class ExpeditionsController < ApplicationController
-  before_action :set_model, except: [:new, :create, :index]
+  before_action :set_model, except: [:new, :create, :index, :react]
+  # skip_before_action :authenticate_user!
+  after_action :create_notifier, only: %I[create]
+  after_action :destroy_notifier, only: %I[destroy]
 
   def index
     authorize Expedition
-    @expedition = Expedition.all
+    @expeditions = Expedition.all
     respond_to do |format|
       format.html
       format.json { render json: @expedition }
@@ -72,5 +75,23 @@ class ExpeditionsController < ApplicationController
 
   def expedition_params
     params.require(:expedition).permit(:title, :description)
+  end
+
+  def create_notifier
+    ActionCable.server.broadcast ExpeditionsChannel::TITLE,
+                                 partial: render_to_string(
+                                     partial: "expeditions/expedition", object: @expedition
+                                 ),
+                                 action: :create.to_s,
+                                 id: @expedition.id
+  end
+
+  def destroy_notifier
+    ActionCable.server.broadcast ExpeditionsChannel::TITLE,
+                                 partial: render_to_string(
+                                     partial: 'expeditions/expedition', object: @expedition
+                                 ),
+                                 action: :destroy.to_s,
+                                 id: @expedition.id
   end
 end
